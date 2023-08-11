@@ -1,4 +1,4 @@
-const BACKEND_COMMAN_URL = 'http://localhost:5000';
+const BACKEND_COMMAN_URL = 'http://3.83.95.203';
 
 
 
