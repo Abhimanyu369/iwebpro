@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import {BACKEND_COMMAN_URL} from "../../Api";
 
 const Current = () => {
@@ -45,7 +45,7 @@ const Current = () => {
             <div className="row">
                 {job.map((v)=>{
                   return (
-                    <div className="col-xxl-3 col-lg-4 col-md-6" key={v._id}>
+                    <div className="col-xxl-3 col-lg-4 col-md-6 px-1" key={v._id}>
                       <>
                         <div className="current-inner py-4 mb-5 wow animated fadeInUp">
                           <div className="d-flex flex-wrap justify-content-between align-items-center px-3 mb-3">
@@ -53,9 +53,9 @@ const Current = () => {
                             </h4>
                           </div>
                           <div className="price px-3 mb-3 flex-wrap d-flex" style={{backgroundColor:'transparent'}}>
-                            <span className="py-2 px-2 my-2 me-xxl-0 me-2 text-dark"><img src="/assets/img/icon/21.png" alt="img" className="me-1" style={{width:'20px'}} /> {v.salary} </span>
-                            <span className="py-2 px-2 my-2 me-xxl-0 me-2 text-dark"><img src="/assets/img/icon/22.png" alt="img" className="me-2" style={{width:'20px'}} /> {v.noResources} resources </span>
-                            <span className="py-2 px-2 my-2 me-xxl-0 me-2 text-dark"><img src="/assets/img/icon/20.png" alt="img" className="me-2" style={{width:'20px'}} /> {v.contractTime} month contract </span>
+                            <span className="py-2 px-2 my-2 me-1 d-flex text-dark"><img src="/assets/img/icon/21.png" alt="img" className="me-1" style={{width:'20px', objectFit:'cover',height:'20px'}} /> {v.salary} </span>
+                            <span className="py-2 px-2 my-2 me-1 d-flex text-dark"><img src="/assets/img/icon/22.png" alt="img" className="me-2" style={{width:'20px', objectFit:'cover',height:'20px'}} /> {v.noResources} resources </span>
+                            <span className="py-2 px-2 my-2 me-1 d-flex text-dark"><img src="/assets/img/icon/20.png" alt="img" className="me-2" style={{width:'20px', objectFit:'cover',height:'20px'}} /> {v.contractTime} month contract </span>
                           </div>
                           <p className="text-dark px-3 py-2 mb-0">Technology Requirement</p>
                           <div className="d-flex flex-wrap justify-content-between align-items-center ps-3 cat">
@@ -67,7 +67,7 @@ const Current = () => {
                               })}
                             </div>
                           </div>
-                            <a className="py-2 ms-4 px-3 mb-3 text-white current-btn" style={{borderRadius: '10px'}} href="#demo">Apply</a>
+                            <NavLink className="py-2 ms-4 px-3 mb-3 text-white current-btn" style={{borderRadius: '10px'}} to={'/developer'}>Apply</NavLink>
                         </div>
                       </>
                     </div>

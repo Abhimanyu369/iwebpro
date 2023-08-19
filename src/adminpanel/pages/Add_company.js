@@ -40,7 +40,7 @@ const Add_company = () => {
         document.getElementById('email').focus();
         return false;
       }
-      if(!regex.test(newUser.email)){
+      else if(!regex.test(newUser.email)){
         e.preventDefault();
         seterr("Invalid Email.");
         setsuc('');
@@ -150,50 +150,52 @@ const Add_company = () => {
     },[]);
 
   return (
-    <><Header />
+        <><Header />
+    <div className="ml-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
       <div className="container">
-        <form onSubmit={handleSubmit} method="post" encType="multipart/form-data" className="col-8 position-absolute d-flex flex-wrap" style={{ marginTop: '130px', marginLeft: '120px', top: 0 }}>
-          <div className="col-12">
+        <form onSubmit={handleSubmit} method="post" encType="multipart/form-data" className='flex flex-wrap'>
+          <div className="w-full">
             <h2 className="mb-4" style={{ letterSpacing: '3px', fontWeight: 600 }}>Add Compony </h2>
             {err ? <p className='error'>{err}</p> : ''}
             {suc ? <p className='success'>{suc}</p> : ''}
           </div>
-          <div className="col-6 mb-4 px-3">
+          <div className="w-3/6 mb-4 px-3">
             <label>Enter Company Name:-</label>
-            <input className="form-control" type="text" name="company_name" id='company_name' onChange={handleChange} placeholder="Company Name" />
+            <input className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" type="text" name="company_name" id='company_name' onChange={handleChange} placeholder="Company Name" />
           </div><br />
-          <div className="col-6 mb-4 px-3">
+          <div className="w-3/6 mb-4 px-3">
             <label>Enter Company Email :-</label>
-            <input className="form-control" type="text" name="email" id='email' onChange={handleChange} placeholder="Email" />
+            <input className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" type="text" name="email" id='email' onChange={handleChange} placeholder="Email" />
           </div><br />
-          <div className="col-6 mb-4 px-3">
+          <div className="w-3/6 mb-4 px-3">
             <label>Enter Company Phone :-</label>
-            <input className="form-control" type="phone" name="phone" id='phone' onChange={handleChange} placeholder="Phone" />
+            <input className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" type="phone" name="phone" id='phone' onChange={handleChange} placeholder="Phone" />
           </div><br />
-          <div className="col-6 mb-4 px-3">
+          <div className="w-3/6 mb-4 px-3">
             <label>Enter Company Address :-</label>
-            <input className="form-control" type="address" name="address" id='address' onChange={handleChange} placeholder="Address" />
+            <input className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" type="address" name="address" id='address' onChange={handleChange} placeholder="Address" />
           </div><br />
-          <div className="col-6 mb-4 px-3">
+          <div className="w-3/6 mb-4 px-3">
             <label>Enter Company Location :-</label>
-            <input className="form-control" type="location" name="location" id='location' onChange={handleChange} placeholder="Location" />
+            <input className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" type="location" name="location" id='location' onChange={handleChange} placeholder="Location" />
           </div><br />
-          <div className="col-6 mb-4 px-3">
+          <div className="w-3/6 mb-4 px-3">
             <label>Choose Company Logo :-</label>
-            <input className="form-control" accept="image/*" type="file" name="photo" id='photo' onChange={handlePhoto} style={{ padding: '13px' }} />
+            <input className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" accept="image/*" type="file" name="photo" id='photo' onChange={handlePhoto} style={{ padding: '13px' }} />
           </div><br />
-          <div className="col-12 mb-4 px-3">
+          <div className="w-full mb-4 px-3">
             <label>Enter Company Description :-</label>
-            <textarea className="form-control" rows="6" name="desc" id='desc' onChange={handleChange} placeholder="Description"></textarea>
+            <textarea className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" rows="6" name="desc" id='desc' onChange={handleChange} placeholder="Description"></textarea>
           </div><br />
-          <div className="col-12 mb-4 px-3">
+          <div className="w-full mb-4 px-3">
             <label>Choose Pdf :-</label>
-            <input className="form-control" accept=".pdf" type="file" onChange={handlePdf} name="pdf" id='pdf' style={{ padding: '13px' }} />
+            <input className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" accept=".pdf" type="file" onChange={handlePdf} name="pdf" id='pdf' style={{ padding: '13px' }} />
           </div><br />
-          <input type="submit" name="submit" value="Submit" className="text-white btn-primary col-12 py-2" />
+          <input type="submit" name="submit" value="Submit" className="w-full cursor-pointer rounded-lg border border-primary bg-primary py-2 font-medium text-white transition hover:bg-opacity-90" />
         </form>
       </div>
-      <Footer /></>
+      </div>
+      </>
   )
 }
 

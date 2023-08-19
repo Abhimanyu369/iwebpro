@@ -10,6 +10,7 @@ import {BACKEND_COMMAN_URL} from "../../Api";
 const Add_job = () => {
 
   const navigate = useNavigate();
+  const [inputList, setInputList] = useState([]);
   const [err,seterr] = useState('');
   const [suc,setsuc] = useState('');
   const [data,setData] = useState({
@@ -17,18 +18,22 @@ const Add_job = () => {
     noResources : 0,
     salary : '',
     contractTime : 0,
-    technology : '',
+    technology : []
   });
-  console.log(data)
+  
   const fetchData = async ()=>{
+    try {
+      data.technology = inputList;
       let fdata = await axios.post(BACKEND_COMMAN_URL+'/api/addJobs',data);
-      console.log(fdata)
       if(fdata.status === 200){
         navigate('/View_job');
       }
       else{
         navigate('/Add_job');
       }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   const formSubmit = (e)=>{
@@ -60,7 +65,7 @@ const Add_job = () => {
       document.getElementById('contractTime').focus();
       return false;
     }
-    else if(!data.technology || data.technology === ''){
+    else if(!inputList || inputList[0] === ''){
       e.preventDefault(); 
       seterr("Technology Required.");
       setsuc('');
@@ -82,54 +87,72 @@ const Add_job = () => {
     }
   }
 
+  const handleInputChange = (e, index) => {
+    const list = [...inputList];
+    list[index] = e.target.value;
+    setInputList(list);
+  };
+ 
+  const handleRemoveClick = index => {
+    const list = [...inputList];
+    list.splice(index, 1);
+    setInputList(list);
+  };
+ 
+  const handleAddClick = (e) => {
+    setInputList([...inputList, e.target.value]);
+  };
+
   return (
-    <><Header />
+    <>
+    <Header />
+    <div className="ml-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
       <div className="container">
-        <form onSubmit={formSubmit} method="post" encType="multipart/form-data" className="col-8 position-absolute d-flex flex-wrap" style={{ marginTop: '130px', marginLeft: '120px', top: 0 }}>
-          <div className="col-12">
+        <form onSubmit={formSubmit} method="post" encType="multipart/form-data" className='flex flex-wrap'>
+          <div className="w-full">
             <h2 className="mb-4" style={{ letterSpacing: '3px', fontWeight: 600 }}>Add Job </h2>
             {err ? <p style={{color : 'red'}}>{err}</p> : ''}
             {suc ? <p style={{color : 'green'}}>{suc}</p> : ''}
           </div>
-          <div className="col-6 mb-4 px-3">
+          <div className="w-3/6 mb-4 px-3">
             <label>Enter Job Name:-</label>
-            <input className="form-control" type="text" name="jobName" id='jobName' onChange={(e)=> setData({...data,jobName : e.target.value})} placeholder="Job Name" />
+            <input className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" type="text" name="jobName" id='jobName' onChange={(e)=> setData({...data,jobName : e.target.value})} placeholder="Job Name" />
           </div><br />
-          {/* <div className="col-6 mb-4 px-3">
-        <label>Enter Company Year :-</label>
-        <input type="number" name="companyYear" className="form-control" onChange={(e)=> setData({...data,first_name : e.target.value})} placeholder="Company Year" / />
-      </div><br />  */}
-          <div className="col-6 mb-4 px-3">
+          <div className="w-3/6 mb-4 px-3">
             <label>Enter No. of Resources :-</label>
-            <input className="form-control" type="number" name="noResources" id='noResources' min="1" onChange={(e)=> setData({...data,noResources : e.target.value})} placeholder="Resources" />
+            <input className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" type="number" name="noResources" id='noResources' min="1" onChange={(e)=> setData({...data,noResources : e.target.value})} placeholder="Resources" />
           </div><br />
-          {/* <div className="col-6 mb-4 px-3">
-        <label>Enter tentative Time :-</label>
-        <input className="form-control" type="number" name="tentativeTime" onChange={(e)=> setData({...data,first_name : e.target.value})} placeholder="Ex. 3 weeks" />
-      </div><br />  */}
-          <div className="col-6 mb-4 px-3">
+          <div className="w-3/6 mb-4 px-3">
             <label>Enter Salary :-</label>
-            <input className="form-control" type="text" name="salary" id='salary' onChange={(e)=> setData({...data,salary : e.target.value})} placeholder="Ex. $1500 - $2500 /month" />
+            <input className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" type="text" name="salary" id='salary' onChange={(e)=> setData({...data,salary : e.target.value})} placeholder="Ex. $1500 - $2500 /month" />
           </div><br />
-          <div className="col-6 mb-4 px-3">
+          <div className="w-3/6 mb-4 px-3">
             <label>Enter Contract Time :-</label>
-            <input className="form-control" type="number" name="contractTime" id='contractTime' min="1" onChange={(e)=> setData({...data,contractTime : e.target.value})} placeholder="Contract Time" />
+            <input className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" type="number" name="contractTime" id='contractTime' min="1" onChange={(e)=> setData({...data,contractTime : e.target.value})} placeholder="Contract Time" />
           </div><br />
-          <div className="col-12 mb-4 px-3 ">
+          <div className="w-full mb-4 px-3 ">
             <label>Enter Technology :-</label>
-            <div className="col-12 row" id="tec">
-              <div className="col-6">
-                <input className="form-control mb-3" type="text" name="technology" id='technology' onChange={(e)=> setData({...data,technology : e.target.value})} placeholder="Technology" />
-              </div>
+            <div className="w-full row" id="tec">
+            {inputList.map((x, i) => {
+              return (
+                <div className='flex mb-4' key={i}>
+                  <>
+                      <input className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" name="technology" id='technology' placeholder="Enter Technology" onChange={e => handleInputChange(e, i)} />
+                      {inputList.length !== 1 && <span id="addInput" className="px-5 py-2 btn-primary text-center" onClick={() => handleRemoveClick(i)} style={{ lineHeight: '35px', cursor: 'pointer' }}>Remove</span>}<br />
+                  </>
+                </div>
+              );
+            })}
             </div>
           </div>
-          <div className="col-12 mb-4 px-3">
-            {/* <span id="addInput" className="   px-5 py-3 btn-primary" style={{ width: '40%' }}>Add Technology</span><br /> */}
+          <div className="w-full mb-4 px-3">
+            <span id="addInput" className="px-5 py-3 btn-primary" onClick={handleAddClick} style={{ width: '40%', cursor: 'pointer' }}>Add Technology</span><br />
           </div>
-          <input type="submit" name="submit" value="Submit" className="text-white btn-primary col-12 py-2" />
+          <input type="submit" name="submit" value="Submit" className="w-full cursor-pointer rounded-lg border border-primary bg-primary py-2 font-medium text-white transition hover:bg-opacity-90" />
         </form>
       </div>
-      <Footer /></>
+    </div>
+      </>
   )
 }
 

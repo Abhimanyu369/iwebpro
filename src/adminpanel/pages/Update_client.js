@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import Header from '../../adminpanel/component/Header';
-import Footer from '../../adminpanel/component/Footer';
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -80,33 +79,36 @@ const Update_client = () => {
   }
 
   return (
-    <><Header />
+        <><Header />
+    <div className="ml-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
       <div className="container">
-    <form onSubmit={formSubmit} method="post" encType="multipart/form-data" className="col-8 position-absolute d-flex flex-wrap" style={{marginTop: '130px', marginLeft: '180px', top: 0}}>
-     <div className="col-12">
+    <form onSubmit={formSubmit} method="post" encType="multipart/form-data" className="flex flex-wrap">
+     <div className="w-full">
       <h2 className="mb-4" style={{letterSpacing: '3px', fontWeight: 600}}>Edit Client </h2>
       {err ? <p className='error'>{err}</p> : ''}
       {suc ? <p className='success'>{suc}</p> : ''}
      </div>
-     <div className="col-12">
+     <div className="w-full">
       <div className="option" >
-        <img src={data.img} alt="img" height="100px" style={{borderRadius: '50%', objectFit: 'cover'}} width="100px" className="img mb-4 shadow-lg bg-dark" id="img" />
+        <img src={data.img} alt="img" className="Eimg mb-4 shadow-lg bg-dark" id="img" />
         <span id="con" className="px-3 py-2 text-dark">Click Image and Upload New Image.</span> 
       </div>
      </div>
-      <div className="col-12 px-3 mb-4">
+      <div className="w-full px-3 mb-4">
         <label>Enter Company Name:-</label>
-        <input className="form-control" type="text" name="company_name" id='company_name' placeholder="Company Name" onChange={(e)=> setData({...data,company_name : e.target.value})} required value={data.company_name} />
+        <input className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" type="text" name="company_name" id='company_name' placeholder="Company Name" onChange={(e)=> setData({...data,company_name : e.target.value})} required value={data.company_name} />
       </div><br />
-      <div className="col-12 px-3 mb-4" id="nImg">
+      <div className="w-full px-3 mb-4" id="nImg">
         <label>Choose Company Image :-</label>
-        <input className="form-control" type="file" onChange={formImg} accept="image/*" id='img' name="img" style={{padding: '13px'}}  />
+        <input className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" type="file" onChange={formImg} accept="image/*" id='img' name="img" style={{padding: '13px'}}  />
       </div><br />
-      <input type="submit" name="submit" value="Edit" className=" text-white btn-primary col-12 py-2"/>
+      <input type="submit" value="Edit" className="w-full cursor-pointer rounded-lg border border-primary bg-primary py-2 font-medium text-white transition hover:bg-opacity-90" />
     </form>
+    </div>
   </div>
-    <Footer /></>
+    {/* <Footer /> */}
+    </>
   )
 }
 
-export default Update_client
+export default Update_client;

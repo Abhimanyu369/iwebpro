@@ -1,40 +1,40 @@
-import {Navigate, Route, Routes} from 'react-router-dom';
-import Blog from './pages/Blog';
-import Company from './pages/CompnyDetail';
-import Event from './pages/Event';
-import NewPage from "./pages/NewPage";
-import Requirements from "./pages/Requirements";
-import Reviews from './pages/Reviews';
-import StartHire from './pages/StartHire';
-import TalentPage from "./pages/TalentPage";
-import DeveloperDetail from './pages/DeveloperDetail';
-import Error from './pages/Error';
-import Dashboard from "./adminpanel/pages/Dashboard"
-import Login from "./adminpanel/pages/Login"
-import Register from "./adminpanel/pages/Register"
+import {Route, Routes} from 'react-router-dom';
+
 import Add_benefit from "./adminpanel/pages/Add_benefit"
-import Add_client from "./adminpanel/pages/Add_client"
 import Add_blog from "./adminpanel/pages/Add_blog"
+import Add_client from "./adminpanel/pages/Add_client"
 import Add_company from "./adminpanel/pages/Add_company"
 import Add_dev from "./adminpanel/pages/Add_dev"
 import Add_developer from "./adminpanel/pages/Add_developer"
 import Add_event from "./adminpanel/pages/Add_event"
 import Add_job from "./adminpanel/pages/Add_job"
+import Add_review from "./adminpanel/pages/Add_review"
 import Add_skill from "./adminpanel/pages/Add_skill"
 import Add_testimonial from "./adminpanel/pages/Add_testimonial"
-import Add_review from "./adminpanel/pages/Add_review"
-
+import Blog from './pages/Blog';
+import Company from './pages/CompnyDetail';
+import Dashboard from "./adminpanel/pages/Dashboard"
+import DeveloperDetail from './pages/DeveloperDetail';
+import Error from './pages/Error';
+import Event from './pages/Event';
+import Login from "./adminpanel/pages/Login"
+import NewPage from "./pages/NewPage";
+import Register from "./adminpanel/pages/Register"
+import Requirements from "./pages/Requirements";
+import Reviews from './pages/Reviews';
+import StartHire from './pages/StartHire';
+import TalentPage from "./pages/TalentPage";
 import Update_benefit from "./adminpanel/pages/Update_benefit"
-import Update_client from "./adminpanel/pages/Update_client"
 import Update_blog from "./adminpanel/pages/Update_blog"
+import Update_client from "./adminpanel/pages/Update_client"
 import Update_company from "./adminpanel/pages/Update_company"
 import Update_dev from "./adminpanel/pages/Update_dev"
 import Update_developer from "./adminpanel/pages/Update_developer"
 import Update_event from "./adminpanel/pages/Update_event"
 import Update_job from "./adminpanel/pages/Update_job"
+import Update_review from "./adminpanel/pages/Update_review"
 import Update_skill from "./adminpanel/pages/Update_skill"
 import Update_testimonial from "./adminpanel/pages/Update_testimonial"
-import Update_review from "./adminpanel/pages/Update_review"
 
 import View_benefit from "./adminpanel/pages/View_benefit"
 import View_client from "./adminpanel/pages/View_client"
@@ -54,8 +54,7 @@ import TalentDashboard from "./talentpanel/pages/Dashboard"
 import LoginTalent from "./talentpanel/pages/Login_talent"
 import EditDeveloper from "./talentpanel/pages/Update_developer"
 import ViewDeveloper from "./talentpanel/pages/View_developer"
-
-
+import Developer from './components/Talent/Developer';
 
 function App() {
   return (
@@ -70,8 +69,8 @@ function App() {
         <Route path='/event' Component={Event} />
         <Route path='/blog' Component={Blog} />
         <Route path='/deve-detail' Component={DeveloperDetail} />
+        <Route path='/developer' Component={Developer} />
 
-        {/* <Route path='/admin' element={JSON.parse(localStorage.getItem('admin')) ? <Dashboard /> : <Navigate replace to={'/login'} />} /> */}
         <Route path='/admin' Component={Dashboard} />
         <Route path='/login' Component={Login} />
         <Route path='/Register' Component={Register} />

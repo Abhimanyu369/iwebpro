@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../../adminpanel/component/Header';
+import Header from '../component/Header';
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -194,85 +194,87 @@ const Add_developer = () => {
 
 
   return (
-    <><Header />
+        <><Header />
+    <div className="ml-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
       <div className="container">
-        <form method="post" onSubmit={formSubmit} enctype="multipart/form-data" className="col-8 position-absolute d-flex flex-wrap" style={{ marginTop: '130px', marginLeft: '120px', top: 0 }}>
-          <div className="col-12">
+        <form method="post" onSubmit={formSubmit} encType="multipart/form-data" className='flex flex-wrap'>
+          <div className="w-full">
             <h2 className="mb-4" style={{ letterSpacing: '3px', fontWeight: 600 }}>Add Developer </h2>
             {err ? <p style={{color : 'red'}}>{err}</p> : ''}
             {suc ? <p style={{color : 'green'}}>{suc}</p> : ''}
           </div>
-          <div className="col-4 px-3 mb-4">
+          <div className="w-1/3 px-3 mb-4">
             <label>Enter First Name:-</label>
-            <input className="form-control" type="text" name="first_name" id='first_name' placeholder="First Name" onChange={(e)=> setData({...data,first_name : e.target.value})} />
+            <input className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" type="text" name="first_name" id='first_name' placeholder="First Name" onChange={(e)=> setData({...data,first_name : e.target.value})} />
           </div><br />
-          <div className="col-4 px-3 mb-4">
+          <div className="w-1/3 px-3 mb-4">
             <label>Enter Last Name:-</label>
-            <input type="text" name="last_name" id='last_name' className="form-control" placeholder="Last Name" onChange={(e)=> setData({...data,last_name : e.target.value})} />
+            <input type="text" name="last_name" id='last_name' className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" placeholder="Last Name" onChange={(e)=> setData({...data,last_name : e.target.value})} />
           </div><br />
-          <div className="col-4 px-3 mb-4">
+          <div className="w-1/3 px-3 mb-4">
             <label>Designation:-</label>
-            <input type="text" name="designation" id='designation' className="form-control" placeholder="Designation" onChange={(e)=> setData({...data,designation : e.target.value})} />
+            <input type="text" name="designation" id='designation' className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" placeholder="Designation" onChange={(e)=> setData({...data,designation : e.target.value})} />
           </div><br />
-          <div className="col-4 px-3 mb-4">
+          <div className="w-1/3 px-3 mb-4">
             <label>Expertise:-</label>
-            <input type="text" name="expertise" id='expertise' className="form-control" placeholder="Expertise" onChange={(e)=> setData({...data,expertise : e.target.value})} />
+            <input type="text" name="expertise" id='expertise' className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" placeholder="Expertise" onChange={(e)=> setData({...data,expertise : e.target.value})} />
           </div><br />
-          <div className="col-4 px-3 mb-4">
+          <div className="w-1/3 px-3 mb-4">
             <label>Enter Email :-</label>
-            <input className="form-control" type="text" name="email" id='email' placeholder="Email" onChange={(e)=> setData({...data,email : e.target.value})} />
+            <input className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" type="text" name="email" id='email' placeholder="Email" onChange={(e)=> setData({...data,email : e.target.value})} />
           </div><br />
-          <div className="col-4 px-3 mb-4">
+          <div className="w-1/3 px-3 mb-4">
             <label>Enter Rate :-</label>
-            <input className="form-control" type="number" name="rate" id='rate' placeholder="Rate" onChange={(e)=> setData({...data,rate : e.target.value})} />
+            <input className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" type="number" name="rate" id='rate' placeholder="Rate" onChange={(e)=> setData({...data,rate : e.target.value})} />
           </div><br />
-          <div className="col-4 px-3 mb-4">
+          <div className="w-1/3 px-3 mb-4">
             <label>Technology:-</label>
-            <input type="text" name="technology" id='technology' className="form-control" placeholder="Technology" onChange={(e)=> setData({...data,technology : e.target.value})} />
+            <input type="text" name="technology" id='technology' className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" placeholder="Technology" onChange={(e)=> setData({...data,technology : e.target.value})} />
           </div><br />
-          <div className="col-4 px-3 mb-4">
+          <div className="w-1/3 px-3 mb-4">
             <label>Framework:-</label>
-            <input type="text" name="framework" id='framework' className="form-control" placeholder="Framework" onChange={(e)=> setData({...data,framework : e.target.value})} />
+            <input type="text" name="framework" id='framework' className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" placeholder="Framework" onChange={(e)=> setData({...data,framework : e.target.value})} />
           </div><br />
-          <div className="col-4 px-3 mb-4">
+          <div className="w-1/3 px-3 mb-4">
             <label>Programming Language:-</label>
-            <input type="text" name="programming_language" id='programming_language' className="form-control" placeholder="Programming Language" onChange={(e)=> setData({...data,programming_language : e.target.value})} />
+            <input type="text" name="programming_language" id='programming_language' className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" placeholder="Programming Language" onChange={(e)=> setData({...data,programming_language : e.target.value})} />
           </div><br />
-          <div className="col-4 px-3 mb-4">
+          <div className="w-1/3 px-3 mb-4">
             <label>Browser:-</label>
-            <input type="text" name="browser" id='browser' className="form-control" placeholder="Browser" onChange={(e)=> setData({...data,browser : e.target.value})} />
+            <input type="text" name="browser" id='browser' className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" placeholder="Browser" onChange={(e)=> setData({...data,browser : e.target.value})} />
           </div><br />
-          <div className="col-4 px-3 mb-4">
+          <div className="w-1/3 px-3 mb-4">
             <label>Database:-</label>
-            <input type="text" name="database" id='database' className="form-control" placeholder="Database" onChange={(e)=> setData({...data,database : e.target.value})} />
+            <input type="text" name="database" id='database' className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" placeholder="Database" onChange={(e)=> setData({...data,database : e.target.value})} />
           </div><br />
-          <div className="col-4 px-3 mb-4">
+          <div className="w-1/3 px-3 mb-4">
             <label>Web Server:-</label>
-            <input type="text" name="web_server" id='web_server' className="form-control" placeholder="Web Server" onChange={(e)=> setData({...data,web_server : e.target.value})} />
+            <input type="text" name="web_server" id='web_server' className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" placeholder="Web Server" onChange={(e)=> setData({...data,web_server : e.target.value})} />
           </div><br />
-          <div className="col-4 px-3 mb-4">
+          <div className="w-1/3 px-3 mb-4">
             <label>Operating System:-</label>
-            <input type="text" name="operating_system" id='operating_system' className="form-control" placeholder="Operating System" onChange={(e)=> setData({...data,operating_system : e.target.value})} />
+            <input type="text" name="operating_system" id='operating_system' className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" placeholder="Operating System" onChange={(e)=> setData({...data,operating_system : e.target.value})} />
           </div><br />
-          <div className="col-4 px-3 mb-4">
+          <div className="w-1/3 px-3 mb-4">
             <label>Enter Years of Experience :-</label>
-            <input className="form-control" type="number" name="experience" id='experience' min="0" placeholder="Years of Experience" onChange={(e)=> setData({...data,experience : e.target.value})} />
+            <input className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" type="number" name="experience" id='experience' min="0" placeholder="Years of Experience" onChange={(e)=> setData({...data,experience : e.target.value})} />
           </div><br />
-          <div className="col-4 px-3 mb-4" id="tec">
+          <div className="w-1/3 px-3 mb-4" id="tec">
             <label>Enter Linkedin URL :-</label>
-            <input className="form-control mb-3" type="text" name="linkedin" id='linkedin' placeholder="Linkedin URL" onChange={(e)=> setData({...data,linkedin : e.target.value})} />
+            <input className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark mb-3" type="text" name="linkedin" id='linkedin' placeholder="Linkedin URL" onChange={(e)=> setData({...data,linkedin : e.target.value})} />
           </div>
-          <div className="col-12 px-3" id="tec">
+          <div className="w-full px-3" id="tec">
             <label>Choose Availability :-</label>
-            <div className="d-flex flex-wrap justify-content-between mb-3">
-              <div style={{ fontSize: '16px' }}><input className="me-2" checked={data.availability === 'Immediately'} value={'Immediately'} type="radio" name="availability" onChange={(e)=> setData({...data,availability : e.target.value})}/>Immediately</div>
-              <div style={{ fontSize: '16px' }}><input className="me-2" checked={data.availability === 'Less Than 2 Weeks'} value={'Less Than 2 Weeks'} type="radio" name="availability" onChange={(e)=> setData({...data,availability : e.target.value})} />Less Than 2 Weeks</div>
-              <div style={{ fontSize: '16px' }}><input className="me-2" checked={data.availability === 'More Than 2 Weeks'} value={'More Than 2 Weeks'} type="radio" name="availability" onChange={(e)=> setData({...data,availability : e.target.value})} />More Than 2 Weeks</div>
-              <div style={{ fontSize: '16px' }}><input className="me-2" checked={data.availability === 'Max 4 Weeks'} value={'Max 4 Weeks'} type="radio" name="availability" onChange={(e)=> setData({...data,availability : e.target.value})} />Max 4 Weeks</div>
+            <div className="flex flex-wrap justify-content-between mb-3">
+              <div style={{ fontSize: '16px' }}><input className="me-2" value={'Immediately'} id='Immediately' type="radio" name="availability" onChange={(e)=> setData({...data,availability : e.target.value})}/><label htmlFor='Immediately'>Immediately</label></div>
+              <div style={{ fontSize: '16px' }}><input className="me-2" value={'Less Than 2 Weeks'} id='Less Than 2 Weeks' type="radio" name="availability" onChange={(e)=> setData({...data,availability : e.target.value})} /><label htmlFor='Less Than 2 Weeks'>Less Than 2 Weeks</label></div>
+              <div style={{ fontSize: '16px' }}><input className="me-2" value={'More Than 2 Weeks'} id='More Than 2 Weeks' type="radio" name="availability" onChange={(e)=> setData({...data,availability : e.target.value})} /><label htmlFor='More Than 2 Weeks'>More Than 2 Weeks</label></div>
+              <div style={{ fontSize: '16px' }}><input className="me-2" value={'Max 4 Weeks'} id='Max 4 Weeks' type="radio" name="availability" onChange={(e)=> setData({...data,availability : e.target.value})} /><label htmlFor='Max 4 Weeks'>Max 4 Weeks</label></div>
             </div>
           </div>
-          <input type="submit" name="submit" value="Submit" className="text-white btn-primary col-12 py-2" />
+          <input type="submit" name="submit" value="Submit" className="w-full cursor-pointer rounded-lg border border-primary bg-primary py-2 font-medium text-white transition hover:bg-opacity-90" />
         </form>
+      </div>
       </div>
     </>
   )

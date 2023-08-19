@@ -12,7 +12,7 @@ const Service = () => {
             </div>
             <div className="row">
                 <div className="col-lg-4 col-md-6 wow animated fadeInUp">
-                    <div className="single-service-inner text-center">
+                    <div className="single-service-inner text-center d-flex flex-column align-items-center justify-content-center">
                         <div className="thumb">
                             <img src="assets/img/icon/9.png" alt="img" />
                         </div>
@@ -23,7 +23,7 @@ const Service = () => {
                     </div>
                 </div>
                 <div className="col-lg-4 col-md-6 wow animated fadeInUp">
-                    <div className="single-service-inner text-center">
+                    <div className="single-service-inner text-center d-flex flex-column align-items-center justify-content-center">
                         <div className="thumb">
                             <img src="assets/img/icon/10.png" alt="img" />
                         </div>
@@ -34,7 +34,7 @@ const Service = () => {
                     </div>
                 </div>
                 <div className="col-lg-4 col-md-6 wow animated fadeInUp">
-                    <div className="single-service-inner text-center">
+                    <div className="single-service-inner text-center d-flex flex-column align-items-center justify-content-center">
                         <div className="thumb">
                             <img src="assets/img/icon/8.png" alt="img" />
                         </div>

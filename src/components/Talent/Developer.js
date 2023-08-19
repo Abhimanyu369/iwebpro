@@ -2,6 +2,8 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {BACKEND_COMMAN_URL} from "../../Api";
+import Header from "../NewPage/Header";
+import Footer from "../NewPage/Footer";
 
 const Developer = () => {
 
@@ -193,6 +195,7 @@ const Developer = () => {
 
   return (
     <>
+    <Header />
       <div className="developer py-5">
         <div className="container">
         <div className="row justify-content-center">
@@ -208,63 +211,63 @@ const Developer = () => {
           {suc ? <p style={{color : 'green'}}>{suc}</p> : ''}
           <form className="row wow animated fadeInUp" method="post" onSubmit={formSubmit} data-wow-delay='0.3s'>
             <div className="col-lg-4 col-sm-6 single-input-inner style-border">
-              <label className="text-dark">First Name</label>
+              <label htmlFor="first_name" className="text-dark developerlabel">First Name</label>
               <input type="text" value={data.first_name} id="first_name" onChange={(e)=> setData({...data,first_name : e.target.value})} name="first_name" className="mb-4 form-control" placeholder="Enter Your First Name"/>
             </div>
             <div className="col-lg-4 col-sm-6 single-input-inner style-border">
-              <label className="text-dark">Last Name</label>
+              <label htmlFor="last_name" className="text-dark developerlabel">Last Name</label>
               <input type="text" value={data.last_name} id="last_name" onChange={(e)=> setData({...data,last_name : e.target.value})} name="last_name" className="mb-4 form-control" placeholder="Enter Your Last Name"/>
             </div>
             <div className="col-lg-4 col-sm-6 single-input-inner style-border">
-              <label className="text-dark">Designation</label>
+              <label htmlFor="designation" className="text-dark developerlabel">Designation</label>
               <input type="text" value={data.designation} id="designation" onChange={(e)=> setData({...data,designation : e.target.value})} name="designation" className="mb-4 form-control" placeholder="Designation"/>
             </div>
             <div className="col-lg-4 col-sm-6 single-input-inner style-border">
-              <label className="text-dark">Expertise</label>
+              <label htmlFor="expertise" className="text-dark developerlabel">Expertise</label>
               <input type="text" value={data.expertise} id="expertise" onChange={(e)=> setData({...data,expertise : e.target.value})} name="expertise" className="mb-4 form-control" placeholder="Expertise"/>
             </div>
             <div className="col-lg-4 col-sm-6 single-input-inner style-border">
-              <label className="text-dark">Email</label>
+              <label htmlFor="email" className="text-dark developerlabel">Email</label>
               <input type="text" value={data.email} id="email" onChange={(e)=> setData({...data,email : e.target.value})} name="email" className="mb-4 form-control" placeholder="Email"/>
             </div>
             <div className="col-lg-4 col-sm-6 single-input-inner style-border">
-              <label className="text-dark">Technology</label>
+              <label htmlFor="technology" className="text-dark developerlabel">Technology</label>
               <input type="text" value={data.technology} id="technology" onChange={(e)=> setData({...data,technology : e.target.value})} name="technology" className="mb-4 form-control" placeholder="Technology"/>
             </div>
             <div className="col-lg-4 col-sm-6 single-input-inner style-border">
-              <label className="text-dark">Framework</label>
+              <label htmlFor="framework" className="text-dark developerlabel">Framework</label>
               <input type="text" value={data.framework} id="framework" onChange={(e)=> setData({...data,framework : e.target.value})} name="framework" className="mb-4 form-control" placeholder="Framework"/>
             </div>
             <div className="col-lg-4 col-sm-6 single-input-inner style-border">
-              <label className="text-dark">Programming Language</label>
+              <label htmlFor="programming_language" className="text-dark developerlabel">Programming Language</label>
               <input type="text" value={data.programming_language} id="programming_language" onChange={(e)=> setData({...data,programming_language : e.target.value})} name="programming_language" className="mb-4 form-control" placeholder="Programming Language"/>
             </div>
             <div className="col-lg-4 col-sm-6 single-input-inner style-border">
-              <label className="text-dark">Browser</label>
+              <label htmlFor="browser" className="text-dark developerlabel">Browser</label>
               <input type="text" value={data.browser} id="browser" onChange={(e)=> setData({...data,browser : e.target.value})} name="browser" className="mb-4 form-control" placeholder="Browser"/>
             </div>
             <div className="col-lg-4 col-sm-6 single-input-inner style-border">
-              <label className="text-dark">Database</label>
+              <label htmlFor="database" className="text-dark developerlabel">Database</label>
               <input type="text" value={data.database} id="database" onChange={(e)=> setData({...data,database : e.target.value})} name="database" className="mb-4 form-control" placeholder="Database"/>
             </div>
             <div className="col-lg-4 col-sm-6 single-input-inner style-border">
-              <label className="text-dark">Web Server</label>
+              <label htmlFor="web_server" className="text-dark developerlabel">Web Server</label>
               <input type="text" value={data.web_server} id="web_server" onChange={(e)=> setData({...data,web_server : e.target.value})} name="web_server" className="mb-4 form-control" placeholder="Web Server"/>
             </div>
             <div className="col-lg-4 col-sm-6 single-input-inner style-border">
-              <label className="text-dark">Operating System</label>
+              <label htmlFor="operating_system" className="text-dark developerlabel">Operating System</label>
               <input type="text" value={data.operating_system} id="operating_system" onChange={(e)=> setData({...data,operating_system : e.target.value})} name="operating_system" className="mb-4 form-control" placeholder="Operating System"/>
             </div>
             <div className="col-lg-4 col-sm-6 single-input-inner style-border">
-              <label className="text-dark">Linkedin URL</label>
+              <label htmlFor="linkedin" className="text-dark developerlabel">Linkedin URL</label>
               <input type="text" value={data.linkedin} id="linkedin" onChange={(e)=> setData({...data,linkedin : e.target.value})} name="linkedin" className="mb-4 form-control" placeholder="Linkedin URL"/>
             </div>
             <div className="col-lg-4 col-sm-6 single-input-inner style-border">
-              <label className="text-dark">Rate ($/Month)</label>
+              <label htmlFor="rate" className="text-dark developerlabel">Rate ($/Month)</label>
               <input type="number" value={data.rate} id="rate" onChange={(e)=> setData({...data,rate : e.target.value})} name="rate" className="mb-4 form-control" placeholder="Rate ($/Month)"/>
             </div>
             <div className="col-lg-4 col-sm-6 single-input-inner style-border">
-              <label className="text-dark">Years Of Experience</label>
+              <label htmlFor="experience" className="text-dark developerlabel">Years Of Experience</label>
               <input type="number" value={data.experience} id="experience" onChange={(e)=> setData({...data,experience : e.target.value})} name="experience" className="mb-4 form-control" placeholder="Years Of Experience"/>
             </div>
             <div className="col-lg-12">
@@ -282,6 +285,7 @@ const Developer = () => {
           </form>
         </div>
       </div>
+      <Footer />
     </>
   )
 }
