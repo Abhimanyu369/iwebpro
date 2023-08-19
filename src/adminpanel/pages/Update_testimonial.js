@@ -1,7 +1,6 @@
 
 import React, { useEffect } from 'react';
 import Header from '../../adminpanel/component/Header';
-import Footer from '../../adminpanel/component/Footer';
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -109,41 +108,43 @@ const Update_testimonial = () => {
 
   return (
     <><Header />
+      <div className="ml-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
         <div className="container">
-    <form onSubmit={formSubmit} method="post" encType="multipart/form-data" className="col-8 position-absolute d-flex flex-wrap" style={{marginTop: '130px', marginLeft: '180px', top: 0}}>
-     <div className="col-12">
+    <form onSubmit={formSubmit} method="post" encType="multipart/form-data" className="flex flex-wrap">
+     <div className="w-full">
       <h2 className="mb-4" style={{letterSpacing: '3px', fontWeight: 600}}>Edit Testimonial </h2>
       {err ? <p className='error'>{err}</p> : ''}
       {suc ? <p className='success'>{suc}</p> : ''}
      </div>
-      <div className="col-12">
-        <div className="option">
-          <img src={data.img || ''} alt="img" height="100px" style={{borderRadius: '50%', objectFit: 'cover'}} width="100px" className="img mb-4" id="img" />
+      <div className="w-full">
+        <div className="option mb-4">
+          <img src={data.img || ''} alt="img" className="Eimg" id="img" />
           <span id="con" className="px-3 py-2 text-dark">Click Image and Upload New Image.</span>
         </div>
       </div>
-      <div className="col-6 px-3 mb-4">
+      <div className="w-3/6 px-3 mb-4">
         <label>Enter Name:-</label>
-        <input className="form-control" type="text" name="name" value={data.name} onChange={(e)=> setData({...data,name : e.target.value})} placeholder="Name" required />
+        <input type="text" name="name" value={data.name} onChange={(e)=> setData({...data,name : e.target.value})} placeholder="Name" className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark"/>
       </div><br />
-      <div className="col-6 px-3 mb-4">
+      <div className="w-3/6 px-3 mb-4">
         <label>Enter Ratings No:-</label>
-        <input className="form-control" type="number" name="rating" value={data.rating} onChange={(e)=> setData({...data,rating : e.target.value})} placeholder="Ratings" required min="1" max="5" />
+        <input className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" type="number" name="rating" value={data.rating} onChange={(e)=> setData({...data,rating : e.target.value})} placeholder="Ratings" required min="1" max="5" />
       </div><br />
-      <div className="col-12 px-3 mb-4">
+      <div className="w-full px-3 mb-4">
         <label>Enter Description :-</label>
-        <textarea name="desc" id="desc" className="form-control" onChange={(e)=> setData({...data,desc : e.target.value})} rows="5" placeholder="Description" required value={data.desc}></textarea>
+        <textarea name="desc" id="desc" className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" onChange={(e)=> setData({...data,desc : e.target.value})} rows="5" placeholder="Description" required value={data.desc}></textarea>
       </div><br />
-      <div className="col-12 px-3 mb-4" id="nImg">
+      <div className="w-full px-3 mb-4" id="nImg">
         <label>Choose Image :-</label>
-        <input className="form-control" type="file" name="img" id='img' accept="image/*" onChange={formImg} style={{padding: '13px'}} />
+        <input className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" type="file" name="img" id='img' accept="image/*" onChange={formImg} style={{padding: '13px'}} />
       </div><br />
-      <input type="submit" name="submit" value="Edit" className=" text-white btn-primary col-12 py-2"/>
+      <input type="submit" value="Edit" className="w-full cursor-pointer rounded-lg border border-primary bg-primary py-2 font-medium text-white transition hover:bg-opacity-90" />
     </form>
   </div>
-    <Footer /></>
+  </div>
+    </>
   )
 }
 
-export default Update_testimonial
+export default Update_testimonial;
 

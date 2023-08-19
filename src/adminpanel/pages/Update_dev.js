@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import Header from '../../adminpanel/component/Header';
-import Footer from '../../adminpanel/component/Footer';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {BACKEND_COMMAN_URL} from "../../Api";
@@ -12,14 +11,14 @@ const Update_dev = () => {
   const id = url.get('id');
   const navigate = useNavigate();
   const [err,seterr] = useState('');
-  const [skill,setskill] = useState([]);
-  const [fea,setfea] = useState([]);
+  const [inputList1, setInputList1] = useState([]);
+  const [inputList2, setInputList2] = useState([]);
   const [suc,setsuc] = useState('');
   const [data,setData] = useState({
     title : '',
     desc : '',
-    skills : '',
-    features : '',
+    skills : [],
+    features : [],
     img : ''
   });
   
@@ -27,9 +26,13 @@ const Update_dev = () => {
     const formData = new FormData();
     formData.append('title', data.title);
     formData.append('img', data.img);
-    formData.append('skills', data.skills);
-    formData.append('features', data.features);
     formData.append('desc', data.desc);
+    for(var i of inputList1){
+      formData.append('features', i);
+    }
+    for(var j of inputList2){
+      formData.append('skills', j);
+    }
     let fdata = await axios.put(BACKEND_COMMAN_URL+'/api/editdev/'+id,formData);
     if(fdata.status === 200){
       navigate('/View_dev');
@@ -48,8 +51,8 @@ const Update_dev = () => {
         desc : fdata.desc,
         img : fdata.img
       });
-      setskill(fdata.skills);
-      setfea(fdata.features);
+      setInputList2(fdata.skills);
+      setInputList1(fdata.features);
     }
   }
 
@@ -68,14 +71,14 @@ const Update_dev = () => {
       document.getElementById('img').focus();
       return false;
     }
-    else if(!data.features || data.features === ''){
+    else if(!inputList1 || inputList1[0] === ''){
       e.preventDefault(); 
       seterr("Features Required.");
       setsuc('');
       document.getElementById('features').focus();
       return false;
     }
-    else if(!data.skills || data.skills === ''){
+    else if(!inputList2 || inputList2[0] === ''){
       e.preventDefault(); 
       seterr("Skill Required.");
       setsuc('');
@@ -118,62 +121,110 @@ const Update_dev = () => {
     });
   },[]);
 
+  const handleInputChange1 = (e, index) => {
+    const list = [...inputList1];
+    list[index] = e.target.value;
+    setInputList1(list);
+  };
+ 
+  const handleRemoveClick1 = index => {
+    const list = [...inputList1];
+    list.splice(index, 1);
+    setInputList1(list);
+  };
+ 
+  const handleAddClick1 = (e) => {
+    setInputList1([...inputList1, e.target.value]);
+  };
+
+  const handleInputChange2 = (e, index) => {
+    const list = [...inputList2];
+    list[index] = e.target.value;
+    setInputList2(list);
+  };
+ 
+  const handleRemoveClick2 = index => {
+    const list = [...inputList2];
+    list.splice(index, 1);
+    setInputList2(list);
+  };
+
+  const handleAddClick2 = (e) => {
+    setInputList2([...inputList2, e.target.value]);
+  };
+
   return (
     <><Header />
+      <div className="ml-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
         <div className="container">
-    <form onSubmit={formSubmit} method="post" encType="multipart/form-data" className="col-8 position-absolute d-flex flex-wrap" style={{marginTop: '130px', marginLeft: '180px', top: 0}}>
-     <div className="col-12">
+    <form onSubmit={formSubmit} method="post" encType="multipart/form-data" className="flex flex-wrap">
+     <div className="w-full">
       <h2 className="mb-4" style={{letterSpacing: '3px', fontWeight: 600}}>Edit Developer Detail </h2>
       {err ? <p className='error'>{err}</p> : ''}
       {suc ? <p className='success'>{suc}</p> : ''}
      </div>
-      <div className="col-12">
+      <div className="w-full">
         <div className="option">
-          <img src={data.img} alt="img" height="100px" style={{borderRadius: '50%', objectFit: 'cover'}}width="100px" className="img mb-4" id="img" />
+          <img src={data.img} alt="img" className="Eimg mb-4" id="img" />
           <span id="con" className="px-3 py-2 text-dark">Click Image and Upload New Image.</span>
         </div>
       </div>
-        <div className="col-6 mb-4 px-3">
+        <div className="w-3/6 mb-4 px-3">
           <label>Enter Title:-</label>
-          <input className="form-control" type="text" name="title" id='title' value={data.title} placeholder="Title"  onChange={(e)=> setData({...data,title : e.target.value})}/>
+          <input className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" type="text" name="title" id='title' value={data.title} placeholder="Title"  onChange={(e)=> setData({...data,title : e.target.value})}/>
         </div><br />
-        <div className="col-6 mb-4 px-3" >
+        <div className="w-3/6 mb-4 px-3" >
           <div id="nImg">
             <label>Choose Image :-</label>
-            <input className="form-control" type="file" name="img" id='img' accept="image/*" onChange={formImg} style={{padding: '13px'}} />
+            <input className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" type="file" name="img" id='img' accept="image/*" onChange={formImg} style={{padding: '13px'}} />
           </div>
         </div><br />
-        <div className="col-6 mb-4 px-3">
+        <div className="w-3/6 mb-4 px-3">
           <label>Enter Features:-</label>
           <div className="row" id="feature">
-          {fea.map((v)=>{
-            return (
-              <input className="form-control mb-4" type="text" name="features" id='features' value={v} placeholder="Feachers"  onChange={(e)=> setData({...data,features : e.target.value})}/>
-            )
-          })}
+          {inputList1.map((x, i) => {
+              return (
+                <div className='flex mb-4' key={i}>
+                  <>
+                      <input className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" value={x} name="features" id='features' placeholder="Enter Feature" onChange={e => handleInputChange1(e, i)} />
+                      {inputList1.length !== 1 && <span id="addInput" className="px-5 py-2 btn-primary text-center" onClick={() => handleRemoveClick1(i)} style={{ lineHeight: '35px', cursor: 'pointer' }}>Remove</span>}<br />
+                  </>
+                </div>
+              );
+            })}
           </div>
-          {/* <a href=" " id="addInputFeature" className="btn btn-primary" style={{width: '40%'}}>Add Feature</a><br /> */}
         </div><br />
-        <div className="col-6 mb-4 px-3">
+        <div className="w-3/6 mb-4 px-3">
           <label>Enter Skills:-</label>
           <div className="row" id="skill">
-          {skill.map((v)=>{
-            return (
-              <input className="form-control mb-4" type="text" name="skills" id='skills' value={v} placeholder="Skills"  onChange={(e)=> setData({...data,skills : e.target.value})}/>
-            )
-          })}
+          {inputList2.map((x, i) => {
+              return (
+                <div className='flex mb-4' key={i}>
+                  <>
+                      <input className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" value={x} name="skills" id='skills' placeholder="Enter Skill" onChange={e => handleInputChange2(e, i)} />
+                      {inputList2.length !== 1 && <span id="addInput" className="px-5 py-2 btn-primary text-center" onClick={() => handleRemoveClick2(i)} style={{ lineHeight: '35px', cursor: 'pointer' }}>Remove</span>}<br />
+                  </>
+                </div>
+              );
+            })}
           </div>
-          {/* <a href=" " id="addInputSkill" className="btn btn-primary" style={{width: '40%'}}>Add Skill</a><br /> */}
         </div><br />
-        <div className="col-12 mb-4 px-3">
+        <div className="w-3/6 mb-4 px-3">
+            <span id="addInput" className="px-5 py-3 btn-primary" onClick={handleAddClick1} style={{ width: '40%', cursor: 'pointer' }}>Add Features</span><br />
+          </div>
+          <div className="w-3/6 mb-4 px-3">
+            <span id="addInput" className="px-5 py-3 btn-primary" onClick={handleAddClick2} style={{ width: '40%', cursor: 'pointer' }}>Add Skills</span><br />
+          </div>
+        <div className="w-full mb-4 px-3">
           <label>Enter Description :-</label>
-          <textarea name="desc" id="desc" className="form-control" rows="5" placeholder="Description" value={data.desc}  onChange={(e)=> setData({...data,desc : e.target.value})}></textarea>
+          <textarea name="desc" id="desc" className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" rows="5" placeholder="Description" value={data.desc}  onChange={(e)=> setData({...data,desc : e.target.value})}></textarea>
         </div><br />
-      <input type="submit" name="submit" value="Edit" className=" text-white btn-primary col-12 py-2"/>
+        <input type="submit" value="Edit" className="w-full cursor-pointer rounded-lg border border-primary bg-primary mb-5 py-2 font-medium text-white transition hover:bg-opacity-90" />
     </form>
+  </div>
   </div>
   </>
   )
 }
 
-export default Update_dev
+export default Update_dev;

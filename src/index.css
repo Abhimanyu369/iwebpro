@@ -1,4 +1,6 @@
 
+
+
 /*-----------------
     # Typography
 -----------------*/
@@ -26,9 +28,7 @@ html {
   box-sizing: border-box;
   outline: none;
   -moz-osx-font-smoothing: grayscale;
-  /* Firefox */
   -webkit-font-smoothing: antialiased;
-  /* WebKit  */
 }
 
 body {
@@ -652,6 +652,7 @@ ul {
   position: absolute;
   top: 2px;
   margin-left: 6px;
+  right: -20px;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -2545,11 +2546,11 @@ ul {
   line-height: 120px;
   text-align: center;
   border-radius: 5px;
-  -webkit-box-shadow: 0px 3px 20px rgba(0, 33, 71, 0.06);
-          box-shadow: 0px 3px 20px rgba(0, 33, 71, 0.06);
+  /* -webkit-box-shadow: 0px 3px 20px rgba(0, 33, 71, 0.06); */
+          /* box-shadow: 0px 3px 20px rgba(0, 33, 71, 0.06); */
   display: inline-block;
   position: relative;
-  background: #fff;
+  /* background: #fff; */
 }
 .single-work-process-inner-2 .thumb img {
   -webkit-transition: 0.4s;
@@ -2566,7 +2567,7 @@ ul {
   font-size: 14px;
   position: absolute;
   right: -15px;
-  top: 45px;
+  top: 20px;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -2828,7 +2829,7 @@ ul {
   height: 50px;
   border: 0 !important;
   padding: 0 18px;
-  border-radius: 6px;
+  border-radius: 10px;
   font-weight: 300;
 }
 .single-input-inner select {
@@ -2836,29 +2837,29 @@ ul {
   height: 50px;
   border: 0 !important;
   padding: 0 18px;
-  border-radius: 6px;
+  border-radius: 10px;
   font-weight: 300;
 }
 .single-input-inner input::-webkit-input-placeholder {
-  color: #000!important;
+  color: var(--heading-color)!important;
 }
 .single-input-inner input::-moz-placeholder {
-  color: #000!important;
+  color: var(--heading-color)!important;
 }
 .single-input-inner input:-ms-input-placeholder {
-  color: #000!important;
+  color: var(--heading-color)!important;
 }
 .single-input-inner input::-ms-input-placeholder {
-  color: #000!important;
+  color: var(--heading-color)!important;
 }
 .single-input-inner input::placeholder {
-  color: #000!important;
+  color: var(--heading-color)!important;
 }
 .single-input-inner textarea::placeholder {
   color: #000!important;
 }
 .single-input-inner select {
-  color: #000!important;
+  color: var(--heading-color)!important;
 }
 .single-input-inner textarea {
   width: 100%;
@@ -2881,10 +2882,13 @@ ul {
   width: 100%;
 }
 .single-input-inner.style-border input {
-  border: 1px solid rgba(234, 225, 214, 0.7) !important;
+  border: 1px solid var(--main-color)!important;
+}
+.single-input-inner textarea {
+  border: 1px solid var(--main-color)!important;
 }
 .single-input-inner.style-border select {
-  border: 1px solid rgba(234, 225, 214, 0.7) !important;
+  border: 1px solid var(--main-color) !important;
 }
 .single-input-inner.style-border input::-webkit-input-placeholder {
   color: #adadad;
@@ -2902,7 +2906,7 @@ ul {
   color: #adadad;
 }
 .single-input-inner.style-border textarea {
-  border: 1px solid rgba(234, 225, 214, 0.7) !important;
+  border: 1px solid #246BFD!important;
   background: transparent;
 }
 .single-input-inner.style-border textarea::-webkit-input-placeholder {
@@ -4251,6 +4255,7 @@ ul {
   height: 200px;
   border-radius: 50%;
   box-shadow: none;
+  border: 1px solid #246BFD;
   outline: none;
   position: relative;
 }
@@ -4296,7 +4301,9 @@ ul {
 
 
 
-
+.activate{
+  color: #0d6efd!important;
+}
 
 
 .workflow-con{
@@ -4505,6 +4512,13 @@ left: -80%;
   padding: 10px;
 }
 
+.single-skill-inner-2{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .single-skill-inner-2 .thumb img {
   transition: 0.4s all;
 }
@@ -4659,4 +4673,51 @@ left: -80%;
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
+}
+
+.relaetivestarthire {
+  position: relative;
+}
+
+.dropdwon_class{
+  position:absolute;
+  top: 100%;
+  z-index: 999;
+  width: 100%;
+  height: 300px;
+  max-height: 300px;
+  overflow-y: auto;
+  background-color: white;
+  border: 1px solid var(--heading-color);
+  border-radius: 10px;
+  color: var(--heading-color);
+}
+.starthirelist{
+  background-color: transparent;
+  list-style: none;
+}
+.starthirelist li {
+  display: flex;
+  align-items: center;
+}
+.starthirelist li label {
+  color: black;
+  font-size: 16px;
+  padding: 5px;
+  border: none;
+  text-transform: capitalize;
+  background-color: transparent;
+}
+.starthirelist li input[type='checkbox'] {
+width: 16px;
+height: 16px;
+}
+
+.starthireFixed {
+  background-color:gray;
+}
+.developerlabel {
+  margin-bottom: 5px;
+  color: var(--paragraph-color) !important;
+  font-weight: 500;
 }

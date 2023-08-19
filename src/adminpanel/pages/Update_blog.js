@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import Header from '../../adminpanel/component/Header';
-import Footer from '../../adminpanel/component/Footer';
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -128,47 +127,50 @@ const Update_blog = () => {
 
   return (
     <><Header />
+      <div className="ml-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
         <div className="container">
-    <form onSubmit={formSubmit} method="post" encType="multipart/form-data" className="col-8 position-absolute d-flex flex-wrap" style={{marginTop: '130px', marginLeft: '180px', top: 0}}>
-     <div className="col-12">
+    <form onSubmit={formSubmit} method="post" encType="multipart/form-data" className="flex flex-wrap">
+     <div className="w-full">
       <h2 className="mb-4" style={{letterSpacing: '3px', fontWeight: 600}}>Edit Blog </h2>
       {err ? <p className='error'>{err}</p> : ''}
       {suc ? <p className='success'>{suc}</p> : ''}
      </div>
-      <div className="col-12">
+      <div className="w-full">
         <div className="option" >
-          <img src={data.img} alt="img" height="100px" style={{borderRadius: '50%', objectFit: 'cover'}} width="100px" className="img mb-4" id="img" />
+          <img src={data.img} alt="img" className="Eimg mb-4" id="img" />
           <span id="con" className="px-3 py-2 text-dark">Click Image and Upload New Image.</span>
         </div>
       </div>
-        <div className="col-6 mb-4 px-3">
+        <div className="w-3/6 mb-4 px-3">
           <label>Enter Title:-</label>
-          <input className="form-control" type="text" name="title" id='title' value={data.title} onChange={(e)=> setData({...data,title : e.target.value})} placeholder="Title" />
+          <input className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" type="text" name="title" id='title' value={data.title} onChange={(e)=> setData({...data,title : e.target.value})} placeholder="Title" />
         </div><br />
-        <div className="col-6 mb-4 px-3">
+        <div className="w-3/6 mb-4 px-3">
           <label>Enter Name:-</label>
-          <input className="form-control" type="text" name="name" id='name' value={data.name} onChange={(e)=> setData({...data,name : e.target.value})} placeholder="Name" />
+          <input className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" type="text" name="name" id='name' value={data.name} onChange={(e)=> setData({...data,name : e.target.value})} placeholder="Name" />
         </div><br />
-        <div className="col-6 mb-4 px-3">
+        <div className="w-3/6 mb-4 px-3">
           <label>Enter Category:-</label>
-          <input className="form-control" type="text" name="cat" id='cat' value={data.cat} onChange={(e)=> setData({...data,cat : e.target.value})} placeholder="Category" />
+          <input className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" type="text" name="cat" id='cat' value={data.cat} onChange={(e)=> setData({...data,cat : e.target.value})} placeholder="Category" />
         </div><br />
-        <div className="col-6 mb-4 px-3">
+        <div className="w-3/6 mb-4 px-3">
           <label>Select Date:-</label>
-          <input className="form-control" type="date" name="date" id='date' value={data.date} onChange={(e)=> setData({...data,date : e.target.value})} placeholder="Date" />
+          <input className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" type="date" name="date" id='date' value={data.date} onChange={(e)=> setData({...data,date : e.target.value})} placeholder="Date" />
         </div><br />
-        <div className="col-12 mb-4 px-3">
+        <div className="w-full mb-4 px-3">
           <label>Enter Description :-</label>
-          <textarea name="desc" id="desc" className="form-control" rows="5" value={data.desc} onChange={(e)=> setData({...data,desc : e.target.value})} placeholder="Description"></textarea>
+          <textarea name="desc" id="desc" className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" rows="5" value={data.desc} onChange={(e)=> setData({...data,desc : e.target.value})} placeholder="Description"></textarea>
         </div><br />
-        <div className="col-12 mb-4 px-3" id="nImg">
+        <div className="w-full mb-4 px-3" id="nImg">
           <label>Choose Image :-</label>
-          <input className="form-control" type="file" name="img" id='img' accept="image/*" onChange={formImg} style={{padding: '13px'}}  />
+          <input className="w-full rounded-lg border-[1.5px] border-stroke p-2 px-3 text-dark" type="file" name="img" id='img' accept="image/*" onChange={formImg} style={{padding: '13px'}}  />
         </div><br />
-      <input type="submit" name="submit" value="Edit" className=" text-white btn-primary col-12 py-2"/>
+        <input type="submit" value="Edit" className="w-full cursor-pointer rounded-lg border border-primary bg-primary py-2 font-medium text-white transition hover:bg-opacity-90" />
     </form>
   </div>
-    <Footer /></>
+  </div>
+    {/* <Footer /> */}
+    </>
   )
 }
 
